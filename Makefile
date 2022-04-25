@@ -9,23 +9,23 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=cypress-firmware
 PKG_VERSION:=5.10.9-2022_0321
-PKG_RELEASE:=1
+PKG_RELEASE:=2
 
-PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
-PKG_SOURCE_URL:=https://codeload.github.com/Infineon/ifx-linux-firmware/tar.gz/release-v$(PKG_VERSION)?
-PKG_HASH:=06dfe59e5de1a3a567e9e28fbcff09a54bab27ab278360f649b4798ff27a3f86
+PKG_SOURCE_PROTO:=git
+PKG_SOURCE_URL:=https://github.com/Infineon/ifx-linux-firmware/
+PKG_MIRROR_HASH:=c172e4eeeace312c2a4cfe58c21d2c55583539e87d0c35a1a71046ff65a6de47
+PKG_SOURCE_VERSION:=release-v$(PKG_VERSION)
 
 PKG_MAINTAINER:=Álvaro Fernández Rojas <noltari@gmail.com>
+PKG_LICENSE_FILES:=LICENCE
 
 include $(INCLUDE_DIR)/package.mk
 
 define Package/cypress-firmware-default
   SECTION:=firmware
   CATEGORY:=Firmware
-  URL:=https://github.com/Infineon/ifx-linux-firmware
+  URL:=https://community.infineon.com/
 endef
-
-TAR_CMD:=$(HOST_TAR) --strip-components 1 -C $(PKG_BUILD_DIR) $(TAR_OPTIONS)
 
 define Build/Compile
 	true
@@ -68,8 +68,8 @@ $(eval $(call BuildPackage,cypress-firmware-43340-sdio))
 define Package/cypress-firmware-43362-sdio
   $(Package/cypress-firmware-default)
   TITLE:=CYW43362 FullMac SDIO firmware
-  PROVIDES:=cyfmac-firmware-43362-sdio
-  CONFLICTS:=cyfmac-firmware-43362-sdio
+  PROVIDES:=brcmfmac-firmware-43362-sdio
+  CONFLICTS:=brcmfmac-firmware-43362-sdio
 endef
 
 define Package/cypress-firmware-43362-sdio/install
@@ -100,8 +100,8 @@ $(eval $(call BuildPackage,cypress-firmware-4339-sdio))
 define Package/cypress-firmware-43430-sdio
   $(Package/cypress-firmware-default)
   TITLE:=CYW43430 FullMac SDIO firmware
-  PROVIDES:=cyfmac-firmware-43430-sdio
-  CONFLICTS:=cyfmac-firmware-43430-sdio
+  PROVIDES:=brcmfmac-firmware-43430-sdio
+  CONFLICTS:=brcmfmac-firmware-43430-sdio
 endef
 
 define Package/cypress-firmware-43430-sdio/install
@@ -140,8 +140,8 @@ $(eval $(call BuildPackage,cypress-firmware-43439-sdio))
 define Package/cypress-firmware-43455-sdio
   $(Package/cypress-firmware-default)
   TITLE:=CYW43455 FullMac SDIO firmware
-  PROVIDES:=cyfmac-firmware-43455-sdio
-  CONFLICTS:=cyfmac-firmware-43455-sdio
+  PROVIDES:=brcmfmac-firmware-43455-sdio
+  CONFLICTS:=brcmfmac-firmware-43455-sdio
 endef
 
 define Package/cypress-firmware-43455-sdio/install
